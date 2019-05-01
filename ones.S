@@ -18,14 +18,17 @@
 		
 		;		Your code here
 		ADR		R10, example        ;put number in r1
-		
+		adr		r11, numones
 		ldr		R1,[R10]           ; load number in ragister R1
 		MOV		R2, #0             ; Initialize r2 as 0
 loop		LSRS		R1, R1, #1         ; Right shift r1 and set carry flag 1 if the last bit is 1
 		ADDCS	R2, R2, #1         ; Add 1 if the last bit is 1
 		
 		BNE		loop
-	
+		str		R2, [r11]
+		end
+		
+		
 done
 		
 example	DCD		0x0010070f
